@@ -1,0 +1,76 @@
+.mainbody{
+  background: none !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6b21a8, #4338ca);
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  .radioButtonTech{
+    margin-top: 50px !important;
+  }
+  .form-check-input {
+    background-color: #007bff; /* Your custom color */
+    border-color: #007bff !important;
+  }
+  
+  section {
+    padding: 100px 20px; /* Top/Bottom and Side padding */
+  }
+  .custom_registerBoxOuter{
+    padding-top: 30px !important;
+    padding: 10px;
+  }
+  .custom_registerBoxInner{
+    padding: 20px !important;
+    
+  }
+  .form_box{
+    padding-bottom: 50px;
+  }
+  .registerButton{
+    margin-top: 50px;
+  }
+  .hero-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .why-section .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .why-section .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .courses-section .course-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .courses-section .course-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .success-box {
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .footer {
+    font-size: 14px;
+  }
+  .card {
+    border-radius: 15px;
+  }
+  
+  .card h3 {
+    color: #4f46e5; /* Indigo color like SAT theme */
+    font-weight: bold;
+  }
+    

@@ -1,0 +1,427 @@
+// import React, { useEffect, useState } from 'react';
+// import './Navbar.css';
+
+// function Navbar() {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const toggleNavbar = () => {
+//     setIsOpen(!isOpen);
+//   };
+
+
+
+
+//   const [isScrolled, serIsScrolled] = useState(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (window.scrollY > 50) {
+//         setIsScrolled(true);
+//       } else {
+//         setIsScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   return (
+//     <nav className="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top custom-navbar">
+//       <div className="container">
+//         <a className="navbar-brand d-flex align-items-center" href="#">
+//           <img src="/satlogo.png" alt="Logo" height="50" className="d-inline-block align-text-top navlogo" />
+//         </a>
+
+//         <button
+//           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+//           type="button"
+//           onClick={toggleNavbar}
+//           data-bs-toggle="collapse"
+//           data-bs-target="#navbarContent"
+//           aria-controls="navbarContent"
+//           aria-expanded={isOpen}
+//           aria-label="Toggle navigation"
+//         >
+//           <div className="toggler-icon"></div>
+//         </button>
+
+//         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+//           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//             <li className="nav-item">
+//               <a className="nav-link active" href="#">Course</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="nav-link" href="#">Project</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="nav-link" href="#">Internship</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+import React, { useEffect, useState } from 'react';
+import './Navbar.css';
+
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // const [isScrolled, setIsScrolled] = useState(false); // <-- fixed typo here!
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 50) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
+
+  // return (
+  //   // <nav className={`navbar navbar-expand-lg navbar-dark bg-transparent custom-navbar ${isScrolled ? 'blurred' : ''}`}>
+  //   <nav className={`navbar navbar-expand-lg navbar-dark fixed-top custom-navbar ${isScrolled ? 'blurred' : ''}`}>
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+
+      // Show navbar if scrolling up, hide if scrolling down
+      if (currentScrollPos > prevScrollPos && currentScrollPos > 100) {
+        setVisible(false); // scrolling down -> hide
+      } else {
+        setVisible(true); // scrolling up -> show
+      }
+
+      setPrevScrollPos(currentScrollPos);
+
+      // Also handle blurred background
+      if (currentScrollPos > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
+
+  return (
+    <nav className={`navbar navbar-expand-lg navbar-dark fixed-top custom-navbar 
+      ${isScrolled ? 'blurred' : ''} 
+      ${visible ? 'visible' : 'hidden'}`}>
+     <div className="container">
+        <a className="navbar-brand d-flex align-items-center" href="#">
+          <img src="/satlogo.png" alt="Logo" height="50" className="d-inline-block align-text-top navlogo" />
+        </a>
+
+        <button
+          className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+          type="button"
+          onClick={toggleNavbar}
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded={isOpen}
+          aria-label="Toggle navigation"
+        >
+          <div className="toggler-icon"></div>
+        </button>
+
+        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+            <li className="nav-item">
+              <a className="nav-link active" href="#">Course</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Project</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Internship</a>
+            </li>
+            <li className="nav-item">
+              <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+
+/* .custom-navbar {
+    backdrop-filter: blur(10px); 
+    nice background blur
+    background-color: rgba(0, 0, 0, 0.3); 
+    transparent dark
+  } */
+.custom-navbar {
+  /* background: linear-gradient(to right, #6b21a8, #4338ca); */
+  /* background: white !important; */
+  /* background: linear-gradient(to right, #4776e6, #8e54e9);  */
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* position: relative !important;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(0px); 
+  transition: backdrop-filter 0.3s ease, background 0.3s ease; */
+  position: relative !important; 
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6); /* light transparent */
+  backdrop-filter: blur(0px); /* no blur initially */
+  transition: backdrop-filter 0.4s ease, background 0.4s ease;
+  z-index: 100;
+}
+
+
+/* Already existing styles here... */
+
+/* Add these new ones: */
+.custom-navbar.hidden {
+  transform: translateY(-100%); /* move navbar up, hide */
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-navbar.visible {
+  transform: translateY(0); /* normal position */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* .navbar {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(0px); 
+  transition: backdrop-filter 0.4s ease, background 0.4s ease;
+  z-index: 100;
+} */
+
+.custom-navbar.blurred {
+  background: rgba(255, 255, 255, 0.3); /* more transparent on scroll */
+  backdrop-filter: blur(10px); /* apply blur when scrolled */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* slight shadow for style */
+}
+
+.navlogo {
+  height: 50px;
+  width: auto;
+
+}
+
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f8f9fa;
+}
+
+.btn-outline-light {
+  border-radius: 20px;
+  padding: 6px 20px;
+}
+
+
+/* Your existing styles remain above... */
+
+/* Toggler Animation */
+/* .custom-toggler {
+  border: none !important;
+  background: transparent;
+  outline: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+} */
+.custom-toggler {
+  border: transparent !important;
+  background: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+/* Existing toggler-icon animation styles remain... */
+
+.custom-toggler:hover {
+  border: none;
+}
+
+.toggler-icon,
+.toggler-icon::before,
+.toggler-icon::after {
+  display: block;
+  background-color: white;
+  height: 2px;
+  width: 100%;
+  /* border-radius: 2px; */
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+}
+
+.toggler-icon {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggler-icon::before {
+  content: '';
+  top: -8px;
+}
+
+.toggler-icon::after {
+  content: '';
+  top: 8px;
+}
+
+/* When menu open (X animation) */
+.custom-toggler.open .toggler-icon {
+  background-color: transparent;
+  border: none !important;
+}
+
+.custom-toggler.open .toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.custom-toggler.open .toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+
+
+
+
+.custom-navbar {
+  position: relative !important;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6); /* light transparent */
+  backdrop-filter: blur(0px); /* no blur initially */
+  transition: transform 0.4s ease, backdrop-filter 0.4s ease, background 0.4s ease;
+  z-index: 100;
+}
+
+/* Blur effect when scrolled */
+.custom-navbar.blurred {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Hide navbar when scrolling down */
+.custom-navbar.hidden {
+  transform: translateY(-100%);
+}
+
+/* Show navbar normally */
+.custom-navbar.visible {
+  transform: translateY(0);
+}
+
+/* Logo */
+.navlogo {
+  height: 50px;
+  width: auto;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f8f9fa;
+}
+
+/* Student Login Button */
+.btn-outline-light {
+  border-radius: 20px;
+  padding: 6px 20px;
+}
+
+/* Toggler Button */
+.custom-toggler {
+  border: none !important;
+  background: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+/* Hamburger lines */
+.toggler-icon,
+.toggler-icon::before,
+.toggler-icon::after {
+  display: block;
+  background-color: white;
+  height: 2px;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+}
+
+.toggler-icon {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggler-icon::before {
+  content: '';
+  top: -8px;
+}
+
+.toggler-icon::after {
+  content: '';
+  top: 8px;
+}
+
+/* When menu open (cross X animation) */
+.custom-toggler.open .toggler-icon {
+  background-color: transparent;
+}
+
+.custom-toggler.open .toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.custom-toggler.open .toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
