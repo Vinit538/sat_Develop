@@ -1,0 +1,44 @@
+.detailsMainContainer{
+  /* background:#E6E6FA !important; */
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: whitesmoke;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+.social-icons-bar {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: center;
+
+
+}
+
+
+
+/* Base icon style */
+.social-icon {
+  font-size: 48px;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: transparent;
+}
+
+/* Hover effects with platform color */
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+
+
+/* Responsive */
+@media (max-width: 576px) {
+  .social-icon {
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+  }
+}

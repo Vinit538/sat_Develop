@@ -425,3 +425,61 @@ export default Navbar;
   transform: rotate(-45deg);
   top: 0;
 }
+
+
+
+// import React from 'react';
+// import './Details.css'
+
+// const Details = () => {
+//     return (
+//         <div className='container-fluid detailsMainContainer'>
+//             <div className='text-center'><h4>SAT Academy Guidance and Support</h4></div>
+//             <div className='text-center'><span><h1>SAT Academy — Educate. Elevate. Excel.</h1></span></div>
+//             <div className='text-center'><span>Fueling Aspirations with Industry-Relevant Education and Professional Growth Opportunities.</span></div>
+//             <div> </div>
+//             <div className='d-flex justify-content-evenl align-items-center justify-content-evenl'>
+//                 <div className='container'>
+//                     <a className="d-flex align-items-center" href="#">
+//                         <img src="/satlogo.png" alt="Logo" className="navlogo" />
+//                     </a>
+//                     <span>All Rights Reserved</span>
+//                 </div>
+//                 <div className='container'>
+//                     <span>Explore</span>
+//                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//                         <li className="nav-item">
+//                             <a className="nav-link" href="#">Course</a>
+//                         </li>
+//                         <li className="nav-item">
+//                             <a className="nav-link" href="#">Project</a>
+//                         </li>
+//                         <li className="nav-item">
+//                             <a className="nav-link" href="#">Internship</a>
+//                         </li>
+
+//                     </ul>
+//                 </div>
+//                 <div className='container'>
+//                     <span>Company</span>
+//                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//                         <li className="nav-item">
+//                             <a className="nav-link" href="#">Course</a>
+//                         </li>
+//                         <li className="nav-item">
+//                             <a className="nav-link" href="#">Project</a>
+//                         </li>
+//                         <li className="nav-item">
+//                             <a className="nav-link" href="#">Internship</a>
+//                         </li>
+//                     </ul>
+//                 </div>
+//                 <div className='container'>Legal</div>
+//                 <div className='container'>FollowUS</div>
+//             </div>
+//         </div>
+//     );
+// }
+
+
+// export default Details;
