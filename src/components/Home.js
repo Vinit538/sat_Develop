@@ -5,12 +5,12 @@ function Home() {
   return (
     <div className='mainbody'>
       {/* Hero Section */}
-      <section className="hero-section d-flex align-items-center">
+      <section className="hero-section d-flex">  
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6">
+          <div className="row">
+            <div className="col-md-6 intro_Div">
               <h1 className="display-4 fw-bold">Empower Your Future with SAT Academy</h1>
-              <p className="lead mt-3">Learn Java, Python, CAD, and more with industry experts. Land your dream job with our placement assistance.</p>
+              <p className="lead mt-3">Launch your career in tech! Learn Full Stack, DevOps, and CAD from real-world experts and get placement-ready with personalized support.</p>
               <a href="#courses" className="btn btn-primary btn-lg mt-4">Explore Courses</a>
             </div>
             <div className="col-md-6 custom_registerBoxOuter ">
@@ -169,11 +169,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      {/* <footer className="footer bg-dark text-white text-center py-3">
-        <p className="mb-0">&copy; {new Date().getFullYear()} SAT Academy | Designed with ❤️</p>
-      </footer> */}
     </div>
   );
 }

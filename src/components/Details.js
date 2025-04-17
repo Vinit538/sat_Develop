@@ -142,9 +142,9 @@ const Details = () => {
                 </ul>
             </div>
 
-            <div className='row text-center text-md-start g-4 pt-5'>
-                <div className='col-6 col-md-3'>
-                    <h6 className='fw-bold mb-3'>Explore</h6>
+            <div className='row text-center  g-4 pt-5 bottomNav'>
+                <div className='col-6 col-md-3 text-center'>
+                    <h6 className='fw-bold mb-3 text-center'>Explore</h6>
                     <ul className='list-unstyled'>
                         <li><a className='text-decoration-none text-dark' href='#'>Courses</a></li>
                         <li><a className='text-decoration-none text-dark' href='#'>Projects</a></li>
@@ -152,7 +152,7 @@ const Details = () => {
                     </ul>
                 </div>
 
-                <div className='col-6 col-md-3'>
+                <div className='col-6 col-md-3 text-center'>
                     <h6 className='fw-bold mb-3'>Company</h6>
                     <ul className='list-unstyled'>
                         <li><a className='text-decoration-none text-dark' href='#'>About Us</a></li>
@@ -161,7 +161,7 @@ const Details = () => {
                     </ul>
                 </div>
 
-                <div className='col-6 col-md-3'>
+                <div className='col-6 col-md-3 text-center'>
                     <h6 className='fw-bold mb-3'>Legal</h6>
                     <ul className='list-unstyled'>
                         <li><a className='text-decoration-none text-dark' href='#'>Privacy Policy</a></li>
@@ -169,7 +169,7 @@ const Details = () => {
                     </ul>
                 </div>
 
-                <div className='col-6 col-md-3'>
+                <div className='col-6 col-md-3 text-center'>
                     <h6 className='fw-bold mb-3'>Follow Us</h6>
                     <ul className='list-unstyled'>
                         <li><a className='text-decoration-none text-dark' href='#'>Facebook</a></li>

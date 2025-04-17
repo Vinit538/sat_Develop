@@ -2,10 +2,11 @@
   position: fixed !important;
   width: 100%;
   /* background: rgba(255, 255, 255, 0.6);  */
-  background: #f8f9fa;
+  background: #eaecee ;
   backdrop-filter: blur(0px); /* no blur initially */
   transition: transform 0.3s ease, background-color 0.3s ease;
   z-index: 100;
+  /* box-shadow: 0 4px 8px black; */
 }
 
 /* Blur effect when scrolled */
@@ -17,6 +18,7 @@
 .blurred {
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.7) !important;
+  color: white;
 }
 
 /* Hide navbar when scrolling down */
@@ -41,7 +43,7 @@
   position: relative; /* very important */
   font-size: 1rem;
   font-weight: bolder;
-  color: black;
+  color: #1c2833 ;
   font-family: "Instrument Sans", sans-serif;
   transition: color 0.3s;
   display: inline-block; 
@@ -54,10 +56,10 @@
   left: 0;
   bottom: 0px; /* or bottom: 4px; for slight spacing */
   width: 0%;
-  height: 3px;
-  background-color: skyblue; /* your underline color */
-  /* transition: width 0.4s ease; */
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 4px;
+  background-color: #0000FF ; /* your underline color */
+  transition: width 0.4s ease;
+  /* transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
 
 }
 
@@ -68,7 +70,8 @@
 
 /* Optionally, keep text color same on hover */
 .navbar-nav .nav-link:hover {
-  color: black;
+  color: #1b4f72;
+  backdrop-filter: blur(10px);
 }
 
 /* .navbar-nav .nav-link {
