@@ -483,3 +483,259 @@ export default Navbar;
 
 
 // export default Details;
+
+
+
+App.jsfile
+
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import Details from './components/Details';
+import './App.css';
+// import { Box, Typography, Button } from '@mui/material';
+
+function App() {
+  return (
+   <div>
+     <Navbar/>
+     <Home/>
+     <Details />
+     <Footer/>
+   </div>
+  );
+}
+
+export default App;
+// <Box sx={{ height: '100vh', background: 'linear-gradient(to right, #6b21a8, #4338ca)', color: 'white', textAlign: 'center', pt: 15 }}>
+    //   <Navbar />
+    // //   <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
+    // //     Welcome to Sat Academy
+    // //   </Typography>
+    // //   <Typography variant="h6" sx={{ mb: 4 }}>
+    // //     This transparent navbar works great with hero sections.
+    // //   </Typography>
+    // //   <Button variant="contained" sx={{ bgcolor: 'white', color: 'indigo', '&:hover': { bgcolor: 'grey.100' }, px: 5, py: 2 }}>
+    // //     Get Started
+    // //   </Button>
+    // // </Box>
+
+
+
+
+    // // import React, { useEffect, useState } from 'react';
+// // import './Navbar.css';
+
+// // function Navbar() {
+// //   const [isOpen, setIsOpen] = useState(false);
+// //   const [isScrolled, setIsScrolled] = useState(false);
+// //   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+// //   const [visible, setVisible] = useState(true);
+
+// //   const toggleNavbar = () => {
+// //     setIsOpen(!isOpen);
+// //   };
+
+// //   useEffect(() => {
+// //     const handleScroll = () => {
+// //       const currentScrollPos = window.scrollY;
+
+// //       // Detect scroll direction
+// //       if (currentScrollPos > prevScrollPos) {
+// //         // Scrolling down
+// //         setVisible(false);
+// //       } else {
+// //         // Scrolling up
+// //         setVisible(true);
+// //       }
+
+// //       setPrevScrollPos(currentScrollPos);
+
+// //       // Add blur effect after 50px
+// //       if (currentScrollPos > 50) {
+// //         setIsScrolled(true);
+// //       } else {
+// //         setIsScrolled(false);
+// //       }
+// //     };
+
+// //     window.addEventListener('scroll', handleScroll);
+// //     return () => window.removeEventListener('scroll', handleScroll);
+// //   }, [prevScrollPos]);
+
+// //   return (
+// //     <nav
+// //       className={`navbar navbar-expand-lg fixed-top custom-navbar
+// //         ${isScrolled ? 'blurred' : ''}
+// //         ${visible ? 'visible' : 'hidden'}
+// //       `}
+// //     >
+// //       <div className="container">
+// //         <a className="navbar-brand d-flex align-items-center" href="#">
+// //           <img src="/satlogo.png" alt="Logo" className="navlogo" />
+// //         </a>
+
+// //         <button
+// //           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+// //           type="button"
+// //           onClick={toggleNavbar}
+// //           aria-controls="navbarContent"
+// //           aria-expanded={isOpen}
+// //           aria-label="Toggle navigation"
+// //         >
+// //           <div className="toggler-icon"></div>
+// //         </button>
+
+// //         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+// //           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+// //             <li className="nav-item">
+// //               <a className="nav-link active" href="#">Course</a>
+// //             </li>
+// //             <li className="nav-item">
+// //               <a className="nav-link" href="#">Project</a>
+// //             </li>
+// //             <li className="nav-item">
+// //               <a className="nav-link" href="#">Internship</a>
+// //             </li>
+// //             <li className="nav-item">
+// //               <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
+// //             </li>
+// //           </ul>
+// //         </div>
+// //       </div>
+// //     </nav>
+// //   );
+// // }
+
+// // export default Navbar;
+// import React, { useEffect, useState } from 'react';
+// import './Navbar.css';
+
+// function Navbar() {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [prevScrollPos, setPrevScrollPos] = useState(0);
+//   const [visible, setVisible] = useState(true);
+
+//   const toggleNavbar = () => {
+//     setIsOpen(!isOpen);
+//   };
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const currentScrollPos = window.scrollY;
+
+//       if (currentScrollPos < prevScrollPos) {
+//         // Scrolling Up
+//         setVisible(true);
+//       } else if (currentScrollPos > prevScrollPos) {
+//         // Scrolling Down
+//         setVisible(false);
+//       }
+
+//       setPrevScrollPos(currentScrollPos);
+
+//       // Add blur after scrolling 50px
+//       if (currentScrollPos > 50) {
+//         setIsScrolled(true);
+//       } else {
+//         setIsScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, [prevScrollPos]);
+
+//   return (
+//     <nav
+//       className={`navbar navbar-expand-lg fixed-top custom-navbar
+//         ${isScrolled ? 'blurred' : ''}
+//         ${visible ? 'visible' : 'hidden'}
+//       `}
+//     >
+//       <div className="container">
+//         <a className="navbar-brand d-flex align-items-center" href="#">
+//           <img src="/satlogo.png" alt="Logo" className="navlogo" />
+//         </a>
+
+//         <button
+//           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+//           type="button"
+//           onClick={toggleNavbar}
+//           aria-controls="navbarContent"
+//           aria-expanded={isOpen}
+//           aria-label="Toggle navigation"
+//         >
+//           <div className="toggler-icon"></div>
+//         </button>
+
+//         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+//           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//             <li className="nav-item">
+//               <a className="nav-link active" href="#">Course</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="nav-link" href="#">Project</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="nav-link" href="#">Internship</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
+public index.html
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html> -->

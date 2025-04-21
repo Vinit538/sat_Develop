@@ -41,10 +41,13 @@
 
 .navbar-nav .nav-link {
   position: relative; /* very important */
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: bolder;
   color: #1c2833 ;
-  font-family: "Instrument Sans", sans-serif;
+  /* font-family: "Instrument Sans", sans-serif; */
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   transition: color 0.3s;
   display: inline-block; 
 }
@@ -58,9 +61,9 @@
   width: 0%;
   height: 4px;
   background-color: #0000FF ; /* your underline color */
-  transition: width 0.4s ease;
-  /* transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
-
+  /* transition: width 0.5s ease !important; */
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
 }
 
 /* On hover, grow the line */
@@ -89,7 +92,14 @@
 } */
 
 /* Student Login Button */
+
+.navloginBtn{
+  background: #eaecee;
+  color: #1b4f72;
+}
+
 .btn-outline-light {
+  color: #1b4f72;
   border-radius: 20px;
   padding: 6px 20px;
 }
@@ -121,6 +131,8 @@
 .toggler-icon {
   top: 50%;
   transform: translateY(-50%);
+  transition: transform 0.3s;
+
 }
 
 .toggler-icon::before {
@@ -140,10 +152,13 @@
 
 .custom-toggler.open .toggler-icon::before {
   transform: rotate(45deg);
+  transition: transform 0.3s;
   top: 0;
 }
 
 .custom-toggler.open .toggler-icon::after {
   transform: rotate(-45deg);
+  transition: transform 0.3s;
+
   top: 0;
 }

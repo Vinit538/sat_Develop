@@ -1,139 +1,57 @@
-// // import React, { useEffect, useState } from 'react';
-// // import './Navbar.css';
-
-// // function Navbar() {
-// //   const [isOpen, setIsOpen] = useState(false);
-// //   const [isScrolled, setIsScrolled] = useState(false);
-// //   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
-// //   const [visible, setVisible] = useState(true);
-
-// //   const toggleNavbar = () => {
-// //     setIsOpen(!isOpen);
-// //   };
-
-// //   useEffect(() => {
-// //     const handleScroll = () => {
-// //       const currentScrollPos = window.scrollY;
-
-// //       // Detect scroll direction
-// //       if (currentScrollPos > prevScrollPos) {
-// //         // Scrolling down
-// //         setVisible(false);
-// //       } else {
-// //         // Scrolling up
-// //         setVisible(true);
-// //       }
-
-// //       setPrevScrollPos(currentScrollPos);
-
-// //       // Add blur effect after 50px
-// //       if (currentScrollPos > 50) {
-// //         setIsScrolled(true);
-// //       } else {
-// //         setIsScrolled(false);
-// //       }
-// //     };
-
-// //     window.addEventListener('scroll', handleScroll);
-// //     return () => window.removeEventListener('scroll', handleScroll);
-// //   }, [prevScrollPos]);
-
-// //   return (
-// //     <nav
-// //       className={`navbar navbar-expand-lg fixed-top custom-navbar
-// //         ${isScrolled ? 'blurred' : ''}
-// //         ${visible ? 'visible' : 'hidden'}
-// //       `}
-// //     >
-// //       <div className="container">
-// //         <a className="navbar-brand d-flex align-items-center" href="#">
-// //           <img src="/satlogo.png" alt="Logo" className="navlogo" />
-// //         </a>
-
-// //         <button
-// //           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
-// //           type="button"
-// //           onClick={toggleNavbar}
-// //           aria-controls="navbarContent"
-// //           aria-expanded={isOpen}
-// //           aria-label="Toggle navigation"
-// //         >
-// //           <div className="toggler-icon"></div>
-// //         </button>
-
-// //         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
-// //           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-// //             <li className="nav-item">
-// //               <a className="nav-link active" href="#">Course</a>
-// //             </li>
-// //             <li className="nav-item">
-// //               <a className="nav-link" href="#">Project</a>
-// //             </li>
-// //             <li className="nav-item">
-// //               <a className="nav-link" href="#">Internship</a>
-// //             </li>
-// //             <li className="nav-item">
-// //               <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
-// //             </li>
-// //           </ul>
-// //         </div>
-// //       </div>
-// //     </nav>
-// //   );
-// // }
-
-// // export default Navbar;
-// import React, { useEffect, useState } from 'react';
+// import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom'; 
 // import './Navbar.css';
 
 // function Navbar() {
+//   const [showNavbar, setShowNavbar] = useState(true);
+//   const [lastScrollY, setLastScrollY] = useState(0);
 //   const [isOpen, setIsOpen] = useState(false);
 //   const [isScrolled, setIsScrolled] = useState(false);
-//   const [prevScrollPos, setPrevScrollPos] = useState(0);
-//   const [visible, setVisible] = useState(true);
 
-//   const toggleNavbar = () => {
-//     setIsOpen(!isOpen);
+//   const toggleNavbar = () => setIsOpen(!isOpen);
+
+//   const controlNavbar = () => {
+//     if (typeof window !== 'undefined') {
+//       if (window.scrollY > lastScrollY) {
+//         setShowNavbar(false);
+//       } else {
+//         setShowNavbar(true);
+//       }
+//       setLastScrollY(window.scrollY);
+
+//       setIsScrolled(window.scrollY > 50);
+//     }
 //   };
+//   useEffect(() => {
+//     const body = document.querySelector('.mainbody');
+//     if (body) {
+//       if (isOpen) {
+//         body.classList.add('push-down');
+//       } else {
+//         body.classList.remove('push-down');
+//       }
+//     }
+//   }, [isOpen]);
+  
 
 //   useEffect(() => {
-//     const handleScroll = () => {
-//       const currentScrollPos = window.scrollY;
-
-//       if (currentScrollPos < prevScrollPos) {
-//         // Scrolling Up
-//         setVisible(true);
-//       } else if (currentScrollPos > prevScrollPos) {
-//         // Scrolling Down
-//         setVisible(false);
-//       }
-
-//       setPrevScrollPos(currentScrollPos);
-
-//       // Add blur after scrolling 50px
-//       if (currentScrollPos > 50) {
-//         setIsScrolled(true);
-//       } else {
-//         setIsScrolled(false);
-//       }
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, [prevScrollPos]);
+//     if (typeof window !== 'undefined') {
+//       window.addEventListener('scroll', controlNavbar);
+//       return () => window.removeEventListener('scroll', controlNavbar);
+//     }
+//   }, [lastScrollY]);
 
 //   return (
 //     <nav
 //       className={`navbar navbar-expand-lg fixed-top custom-navbar
 //         ${isScrolled ? 'blurred' : ''}
-//         ${visible ? 'visible' : 'hidden'}
+//         ${showNavbar ? 'visible' : 'hidden'}
 //       `}
 //     >
 //       <div className="container">
-//         <a className="navbar-brand d-flex align-items-center" href="#">
+//         <Link className="navbar-brand d-flex align-items-center" to="/">
 //           <img src="/satlogo.png" alt="Logo" className="navlogo" />
-//         </a>
+//         </Link>
 
 //         <button
 //           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
@@ -149,16 +67,18 @@
 //         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
 //           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
 //             <li className="nav-item">
-//               <a className="nav-link active" href="#">Course</a>
+//               <Link className="nav-link" to="#">Full Stack Development</Link>
 //             </li>
 //             <li className="nav-item">
-//               <a className="nav-link" href="#">Project</a>
+//               <Link className="nav-link" to="#">Cloud Computing</Link>
 //             </li>
 //             <li className="nav-item">
-//               <a className="nav-link" href="#">Internship</a>
+//               <Link className="nav-link" to="#">Projects / Internship</Link>
 //             </li>
 //             <li className="nav-item">
-//               <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
+//               <Link className="btn btn-outline-light ms-3 navloginBtn" to="/satLogin">
+//                 Student Login
+//               </Link>
 //             </li>
 //           </ul>
 //         </div>
@@ -169,7 +89,103 @@
 
 // export default Navbar;
 
+// import React, { useState, useEffect } from 'react';
+// import { Link, useLocation } from 'react-router-dom';
+// import './Navbar.css';
+
+// function Navbar() {
+//   const [showNavbar, setShowNavbar] = useState(true);
+//   const [lastScrollY, setLastScrollY] = useState(0);
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [isScrolled, setIsScrolled] = useState(false);
+
+//   const location = useLocation(); // 👈 Detect route change
+
+//   const toggleNavbar = () => setIsOpen(!isOpen);
+
+//   const controlNavbar = () => {
+//     if (typeof window !== 'undefined') {
+//       if (window.scrollY > lastScrollY) {
+//         setShowNavbar(false);
+//       } else {
+//         setShowNavbar(true);
+//       }
+//       setLastScrollY(window.scrollY);
+//       setIsScrolled(window.scrollY > 50);
+//     }
+//   };
+
+//   // Push down body if menu is open
+//   useEffect(() => {
+//     const body = document.querySelector('.mainbody');
+//     if (body) {
+//       if (isOpen) {
+//         body.classList.add('push-down');
+//       } else {
+//         body.classList.remove('push-down');
+//       }
+//     }
+//   }, [isOpen]);
+
+//   // Close navbar toggler on route change
+//   useEffect(() => {
+//     setIsOpen(false);
+//   }, [location]); // 👈 This auto-closes the menu on page change
+
+//   useEffect(() => {
+//     window.addEventListener('scroll', controlNavbar);
+//     return () => window.removeEventListener('scroll', controlNavbar);
+//   }, [lastScrollY]);
+
+//   return (
+//     <nav
+//       className={`navbar navbar-expand-lg fixed-top custom-navbar
+//         ${isScrolled ? 'blurred' : ''}
+//         ${showNavbar ? 'visible' : 'hidden'}
+//       `}
+//     >
+//       <div className="container">
+//         <Link className="navbar-brand d-flex align-items-center" to="/">
+//           <img src="/satlogo.png" alt="Logo" className="navlogo" />
+//         </Link>
+
+//         <button
+//           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+//           type="button"
+//           onClick={toggleNavbar}
+//           aria-controls="navbarContent"
+//           aria-expanded={isOpen}
+//           aria-label="Toggle navigation"
+//         >
+//           <div className="toggler-icon"></div>
+//         </button>
+
+//         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+//           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Full Stack Development</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Cloud Computing</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Projects / Internship</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="btn btn-outline-light ms-3 navloginBtn" to="/satLogin">
+//                 Student Login
+//               </Link>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -178,38 +194,40 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
+  const location = useLocation();
+
+  const toggleNavbar = () => setIsOpen(!isOpen);
+
+  const handleLinkClick = () => {
+    setIsOpen(false); // 👈 This closes the navbar on link click
   };
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
       if (window.scrollY > lastScrollY) {
-        // Scrolling down
         setShowNavbar(false);
       } else {
-        // Scrolling up
         setShowNavbar(true);
       }
       setLastScrollY(window.scrollY);
-
-      // Blur effect
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     }
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
+    const body = document.querySelector('.mainbody');
+    if (body) {
+      if (isOpen) {
+        body.classList.add('push-down');
+      } else {
+        body.classList.remove('push-down');
+      }
     }
+  }, [isOpen]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+    return () => window.removeEventListener('scroll', controlNavbar);
   }, [lastScrollY]);
 
   return (
@@ -220,9 +238,9 @@ function Navbar() {
       `}
     >
       <div className="container">
-        <a className="navbar-brand d-flex align-items-center" href="#">
+        <Link className="navbar-brand d-flex align-items-center" to="/" onClick={handleLinkClick}>
           <img src="/satlogo.png" alt="Logo" className="navlogo" />
-        </a>
+        </Link>
 
         <button
           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
@@ -238,16 +256,18 @@ function Navbar() {
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
             <li className="nav-item">
-              <a className="nav-link" href="#">Course</a>
+              <Link className="nav-link" to="#" onClick={handleLinkClick}>Full Stack Development</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Project</a>
+              <Link className="nav-link" to="#" onClick={handleLinkClick}>Cloud Computing</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Internship</a>
+              <Link className="nav-link" to="#" onClick={handleLinkClick}>Projects / Internship</Link>
             </li>
             <li className="nav-item">
-              <a className="btn btn-outline-light ms-3" href="#">Student Login</a>
+              <Link className="btn btn-outline-light ms-3 navloginBtn" to="/satLogin" onClick={handleLinkClick}>
+                Student Login
+              </Link>
             </li>
           </ul>
         </div>
@@ -257,4 +277,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

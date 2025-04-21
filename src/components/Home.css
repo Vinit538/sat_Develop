@@ -4,17 +4,51 @@
 html {
   scroll-behavior: smooth;
 }
+
+
+
 .hero-section {
     min-height: 100vh;
-    /* background: linear-gradient(135deg, #6b21a8, #4338ca); */
     background: #ecf0f1 ;
     color: #1b4f72;
-    display: flex;
-    /* align-items: center; */
+    justify-content: space-between !important;
   }
   .intro_Div{
     padding-top: 25px;
   }
+  .introDivHeading{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .introDivText{
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:wdth" 100; */
+  }
+
+  .btn-grad {background-image: linear-gradient(to right, #c2e59c 0%, #64b3f4  51%, #c2e59c  100%)}
+  .btn-grad {
+     margin: 10px;
+     padding: 15px 45px;
+     text-align: center;
+     text-transform: uppercase;
+     transition: 0.5s;
+     background-size: 200% auto;
+     color: white;            
+     box-shadow: 0 0 20px #eee;
+     border-radius: 10px;
+     display: block;
+   }
+
+   .btn-grad:hover {
+     background-position: right center; /* change the direction of the change here */
+     color: #fff;
+     text-decoration: none;
+   }
   .radioButtonTech{
     margin-top: 50px !important;
   }
@@ -22,9 +56,37 @@ html {
     background-color: #007bff; /* Your custom color */
     border-color: #007bff !important;
   }
-  
+  /* form validation */
+.is-valid {
+  border: 2px solid green !important;
+}
+
+.is-invalid {
+  border: 2px solid red !important;
+}
+.position-relative {
+  position: relative;
+}
+
+.validation-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.validation-icon.valid {
+  color: green;
+}
+
+.validation-icon.invalid {
+  color: red;
+}
+
   section {
-    padding: 100px 10px; /* Top/Bottom and Side padding */
+    padding: 100px 50px; /* Top/Bottom and Side padding */
   }
   .custom_registerBoxOuter{
     padding-top: 20px !important;

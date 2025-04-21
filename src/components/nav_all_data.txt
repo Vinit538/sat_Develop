@@ -1,0 +1,393 @@
+// import React, { useState, useEffect } from 'react';
+// import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+
+// import Navbar from './components/Navbar';
+// import Home from './components/Home';
+// import Footer from './components/Footer';
+// import SatLogin from './components/SatLogin';
+
+// import './App.css';
+
+// // Component that handles routing, state, and useLocation (must be inside Router)
+// function AppWrapper() {
+//   const location = useLocation();
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   // Close navbar on route change
+//   useEffect(() => {
+//     setIsOpen(false);
+//   }, [location]);
+
+//   return (
+//     <>
+//       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
+//       <Routes>
+//         <Route path='/' element={<Home isOpen={isOpen} />} />
+//         <Route path='/satLogin' element={<SatLogin />} />
+//       </Routes>
+//       <Footer />
+//     </>
+//   );
+// }
+
+// // Main App with Router wrapper
+// function App() {
+//   return (
+//     <Router>
+//       <AppWrapper />
+//     </Router>
+//   );
+// }
+
+// export default App;
+// .hero-section {
+//     margin-top: 0;
+//     transition: margin-top 0.3s ease;
+//   }
+  
+//   /* Push down content when mobile navbar is open */
+//   .hero-section.push-down {
+//     transition: margin-top 0.3s ease !important;
+//     margin-top: 200px;
+//   }
+  
+//   /* Prevent push-down on larger screens */
+//   @media (min-width: 992px) {
+//     .hero-section.push-down {
+//       margin-top: 0 !important;
+//     }
+//   }
+
+// useEffect(() => {
+//     const body = document.querySelector('.mainbody');
+//     if (body) {
+//       if (isOpen) {
+//         body.classList.add('push-down');
+//       } else {
+//         body.classList.remove('push-down');
+//       }
+//     }
+//   }, [isOpen]);
+
+// import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom'; 
+// import './Navbar.css';
+
+// function Navbar() {
+//   const [showNavbar, setShowNavbar] = useState(true);
+//   const [lastScrollY, setLastScrollY] = useState(0);
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [isScrolled, setIsScrolled] = useState(false);
+
+//   const toggleNavbar = () => setIsOpen(!isOpen);
+
+//   const controlNavbar = () => {
+//     if (typeof window !== 'undefined') {
+//       if (window.scrollY > lastScrollY) {
+//         setShowNavbar(false);
+//       } else {
+//         setShowNavbar(true);
+//       }
+//       setLastScrollY(window.scrollY);
+
+//       setIsScrolled(window.scrollY > 50);
+//     }
+//   };
+//   useEffect(() => {
+//     const body = document.querySelector('.mainbody');
+//     if (body) {
+//       if (isOpen) {
+//         body.classList.add('push-down');
+//       } else {
+//         body.classList.remove('push-down');
+//       }
+//     }
+//   }, [isOpen]);
+  
+
+//   useEffect(() => {
+//     if (typeof window !== 'undefined') {
+//       window.addEventListener('scroll', controlNavbar);
+//       return () => window.removeEventListener('scroll', controlNavbar);
+//     }
+//   }, [lastScrollY]);
+
+//   return (
+//     <nav
+//       className={`navbar navbar-expand-lg fixed-top custom-navbar
+//         ${isScrolled ? 'blurred' : ''}
+//         ${showNavbar ? 'visible' : 'hidden'}
+//       `}
+//     >
+//       <div className="container">
+//         <Link className="navbar-brand d-flex align-items-center" to="/">
+//           <img src="/satlogo.png" alt="Logo" className="navlogo" />
+//         </Link>
+
+//         <button
+//           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+//           type="button"
+//           onClick={toggleNavbar}
+//           aria-controls="navbarContent"
+//           aria-expanded={isOpen}
+//           aria-label="Toggle navigation"
+//         >
+//           <div className="toggler-icon"></div>
+//         </button>
+
+//         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+//           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Full Stack Development</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Cloud Computing</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Projects / Internship</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="btn btn-outline-light ms-3 navloginBtn" to="/satLogin">
+//                 Student Login
+//               </Link>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
+// Navbar.js
+// import React, { useEffect, useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import './Navbar.css';
+
+// function Navbar({ isOpen, setIsOpen }) {
+//   const [showNavbar, setShowNavbar] = useState(true);
+//   const [lastScrollY, setLastScrollY] = useState(0);
+//   const [isScrolled, setIsScrolled] = useState(false);
+
+//   const toggleNavbar = () => setIsOpen(!isOpen);
+
+//   const controlNavbar = () => {
+//     if (typeof window !== 'undefined') {
+//       if (window.scrollY > lastScrollY) {
+//         setShowNavbar(false);
+//       } else {
+//         setShowNavbar(true);
+//       }
+//       setLastScrollY(window.scrollY);
+//       setIsScrolled(window.scrollY > 50);
+//     }
+//   };
+
+//   useEffect(() => {
+//     window.addEventListener('scroll', controlNavbar);
+//     return () => window.removeEventListener('scroll', controlNavbar);
+//   }, [lastScrollY]);
+
+//   return (
+//     <nav
+//       className={`navbar navbar-expand-lg fixed-top custom-navbar
+//         ${isScrolled ? 'blurred' : ''}
+//         ${showNavbar ? 'visible' : 'hidden'}
+//       `}
+//     >
+//       <div className="container">
+//         <Link className="navbar-brand d-flex align-items-center" to="/">
+//           <img src="/satlogo.png" alt="Logo" className="navlogo" />
+//         </Link>
+
+//         <button
+//           className={`navbar-toggler custom-toggler ${isOpen ? 'open' : ''}`}
+//           type="button"
+//           onClick={toggleNavbar}
+//           aria-controls="navbarContent"
+//           aria-expanded={isOpen}
+//           aria-label="Toggle navigation"
+//         >
+//           <div className="toggler-icon"></div>
+//         </button>
+
+//         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarContent">
+//           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Full Stack Development</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Cloud Computing</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="nav-link" to="#">Projects / Internship</Link>
+//             </li>
+//             <li className="nav-item">
+//               <Link className="btn btn-outline-light ms-3 navloginBtn" to="/satLogin">
+//                 Student Login
+//               </Link>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+<div className='detailsNavSocialLinkDiv'>
+<FaFacebookF className='detailsNavLinkIcon' />
+<Link className='text-decoration-none text-dark detailsNavLinks' to='/'>FaceBook</Link>
+</div>
+<div className='detailsNavSocialLinkDiv'>
+<FaInstagram className='detailsNavLinkIcon' />
+<Link className='text-decoration-none text-dark detailsNavLinks' to='/'>Instagram</Link>
+</div>
+<div className='detailsNavSocialLinkDiv'>
+<FaGithubSquare className='detailsNavLinkIcon' />
+<Link className='text-decoration-none text-dark detailsNavLinks' to='/'>Github</Link>
+</div>
+<div className='detailsNavSocialLinkDiv'>
+{/* <FaYoutube className='detailsNavLinkIcon' /> */}
+<Link className='text-decoration-none text-dark detailsNavLinks' to='/'>YouTube</Link>
+</div>
+<div className='detailsNavSocialLinkDiv'>
+{/* <FaLinkedinIn className='detailsNavLinkIcon' /> */}
+<Link className='text-decoration-none text-dark detailsNavLinks' to='/'>LinkedIn</Link>
+</div>
+
+
+
+
+// import React from 'react';
+// import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+
+// import './Details.css';
+
+// const Details = () => {
+//     return (
+//         <div className='container detailsMainContainer py-5 px-3'>
+//             <div className='text-center mb-4'>
+//                 <h4 className='fw-bold'>SAT Academy Guidance and Support</h4>
+//             </div>
+
+//             <div className='text-center mb-3'>
+//                 <h1 className='display-6 fw-semibold'>SAT Academy — Educate. Elevate. Excel.</h1>
+//             </div>
+
+//             <div className='text-center mb-5'>
+//                 <p className='lead'>We’re here to help you level up your skills, gain confidence, and land your first tech job with expert support and placement guidance.</p>
+//             </div>
+//             <div className="social-icons-bar py-3">
+//                 <ul className='list-unstyled d-flex gap-4 justify-content-center m-0'>
+//                     <li>
+//                         <a href='https://facebook.com' target='_blank' rel='noreferrer' className='text-dark fs-5'>
+//                             <FaFacebookF />
+//                         </a>
+//                     </li>
+//                     <li>
+//                         <a href='https://instagram.com' target='_blank' rel='noreferrer' className='text-dark fs-5'>
+//                             <FaInstagram />
+//                         </a>
+//                     </li>
+//                     <li>
+//                         <a href='https://linkedin.com' target='_blank' rel='noreferrer' className='text-dark fs-5'>
+//                             <FaLinkedinIn />
+//                         </a>
+//                     </li>
+//                     <li>
+//                         <a href='https://youtube.com' target='_blank' rel='noreferrer' className='text-dark fs-5'>
+//                             <FaYoutube />
+//                         </a>
+//                     </li>
+//                 </ul>
+//             </div>
+
+
+//             <div className='row text-center text-md-start g-4'>
+//                 {/* <div className='col-12 col-md-6 col-lg-3'>
+//                     <a className='d-flex justify-content-center justify-content-md-start mb-2' href='#'>
+//                         <img src='/satlogo.png' alt='SAT Academy Logo' className='img-fluid' style={{ maxWidth: '150px' }} />
+//                     </a>
+//                     <p className='small text-muted'>© 2025 SAT Academy. All Rights Reserved.</p>
+//                 </div> */}
+
+//                 <div className='col-6 col-md-3'>
+//                     <h6 className='fw-bold mb-3'>Explore</h6>
+//                     <ul className='list-unstyled'>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Courses</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Projects</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Internships</a></li>
+//                     </ul>
+//                 </div>
+
+//                 <div className='col-6 col-md-3'>
+//                     <h6 className='fw-bold mb-3'>Company</h6>
+//                     <ul className='list-unstyled'>
+//                         <li><a className='text-decoration-none text-dark' href='#'>About Us</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Careers</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Contact</a></li>
+//                     </ul>
+//                 </div>
+
+//                 <div className='col-6 col-md-3'>
+//                     <h6 className='fw-bold mb-3'>Legal</h6>
+//                     <ul className='list-unstyled'>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Privacy Policy</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>Terms & Conditions</a></li>
+//                     </ul>
+//                 </div>
+
+
+//                 <div className='col-6 col-md-3'>
+//                     <h6 className='fw-bold mb-3'>Follow Us</h6>
+//                     <ul className='list-unstyled'>
+//                         <li><a className='text-decoration-none text-dark' href='#'>FaceBook</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>instagram</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>linkedin</a></li>
+//                         <li><a className='text-decoration-none text-dark' href='#'>YouTube</a></li>
+//                     </ul>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+
+.detailsNavLinks {
+  position: relative; /* enables ::after positioning */
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #1c2833;
+  display: inline-block;
+  text-decoration: none; /* ❌ remove default link underline */
+  transition: color 0.3s;
+  /* line-height: 1.5; ensures space for the underline */
+  padding-bottom: 2px 0; /* space for the animated underline */
+  /* overflow: hidden; ensures ::after is visible */
+}
+
+/* Underline animation */
+.detailsNavLinks::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  
+  bottom: 0; /* aligns line directly under text */
+  width: 0%;
+  height: 3px;
+  background-color: #0000FF;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+.detailsNavLinks:hover::after {
+  width: 100%;
+}
+
+.detailsNavLinks:hover {
+  color: #1b4f72;
+}
+
