@@ -7,7 +7,7 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <footer className="bg-dark text-white py-4">
+        <footer className="bg-dark text-white py-4 footerDiv">
             <div>
                 <div className="d-flex customFooterDetails ms-auto mb-2 mb-lg-0 gap-2 justify-content-around align-items-center">
                     <Link className='nav-Link footerLink' to="/">

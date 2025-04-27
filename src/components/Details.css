@@ -24,7 +24,7 @@
   color: #1b4f72;
   font-size: 58px;
   background-color: transparent;
-  transition: transform 0.4;
+  transition: transform 0.4s;
 }
 
 /* Hover effects with platform color */

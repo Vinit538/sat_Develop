@@ -265,6 +265,9 @@ function Navbar() {
               <Link className="nav-link" to="#" onClick={handleLinkClick}>Projects / Internship</Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/hireTalent" onClick={handleLinkClick}>Hire Talent</Link>
+            </li>
+            <li className="nav-item">
               <Link className="btn btn-outline-light ms-3 navloginBtn" to="/satLogin" onClick={handleLinkClick}>
                 Student Login
               </Link>

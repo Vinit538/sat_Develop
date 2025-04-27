@@ -1,7 +1,9 @@
+.footerDiv{
+    margin-bottom: 0 !important;
+}
 .customFooterDetails {
     display: flex !important;
     flex-direction: row !important;
-
 }
 @media (max-width:768px) {
     .customFooterDetails{

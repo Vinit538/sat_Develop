@@ -241,7 +241,7 @@ function UserForm() {
                                 : "is-invalid"
                             }`}
                         type="text"
-                        autoComplete='off'
+                        autoComplete='on'
                         id="userCity"
                         name="userCity"
                         onFocus={handleInputFocus}

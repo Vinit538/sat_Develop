@@ -55,18 +55,18 @@ const Details = () => {
                 <div className='col-6 col-md-3 text-center'>
                     <h6 className='fw-bold mb-3 text-center detailsNavLinkHead'>Explore</h6>
                     <div className='detailsNavLinkDiv'>
-                        <Link className='detailsNavLinks py-1' to='/'><span className='navlinkInDetails'>Courses</span></Link>
-                        <Link className='detailsNavLinks py-1' to='/'><span className='navlinkInDetails'>Internship</span></Link>
-                        <Link className='detailsNavLinks py-1' to='/'><span className='navlinkInDetails'>Projects</span></Link>
+                        <Link className='detailsNavLinks py-1' to='/courses'><span className='navlinkInDetails'>Courses</span></Link>
+                        <Link className='detailsNavLinks py-1' to='/internships'><span className='navlinkInDetails'>Internship</span></Link>
+                        <Link className='detailsNavLinks py-1' to='/projects'><span className='navlinkInDetails'>Projects</span></Link>
                     </div>
                 </div>
 
                 <div className='col-6 col-md-3 text-center'>
                     <h6 className='fw-bold mb-3 detailsNavLinkHead'>Company</h6>
                     <div className='detailsNavLinkDiv'>
-                        <Link className='detailsNavLinks py-1' to='/'><span className='navlinkInDetails'>About</span></Link>
-                        <Link className='detailsNavLinks py-1' to='/'><span className='navlinkInDetails'>Career</span></Link>
-                        <Link className='detailsNavLinks py-1' to='/'><span className='navlinkInDetails'>Career</span></Link>
+                        <Link className='detailsNavLinks py-1' to='/aboutUs'><span className='navlinkInDetails'>About</span></Link>
+                        <Link className='detailsNavLinks py-1' to='/contactUs'><span className='navlinkInDetails'>Contact Us</span></Link>
+                        <Link className='detailsNavLinks py-1' to='/career'><span className='navlinkInDetails'>Career</span></Link>
                     </div>
                 </div>
 
